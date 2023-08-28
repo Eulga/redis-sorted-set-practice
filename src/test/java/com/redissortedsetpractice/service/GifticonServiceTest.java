@@ -29,7 +29,7 @@ class GifticonServiceTest {
         List<Thread> workers = Stream
                                 .generate(() -> new Thread(new AddQueueWorker(countDownLatch, chickenEvent)))
                                 .limit(people)
-                                .collect(Collectors.toList());
+                                .toList();
         workers.forEach(Thread::start);
         countDownLatch.await();
         Thread.sleep(5000); // 기프티콘 발급 스케줄러 작업 시간
